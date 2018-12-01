@@ -8,7 +8,7 @@ This is Dockerfile. it will be used to build the firmware of ESP-32 with securit
 Firt of all you need a docker file inherided this docker image
 
 ```dockerfile
-FROM gcr.io/bonair-pass/docker-for-bulding-esp-32-firmware:latest
+FROM muod/esp32-sdk:latest
 
 COPY src /project/src
 COPY build.sh /project/src
@@ -25,8 +25,8 @@ CMD [ "bash", "./build.sh"]
 $ docker build -t esp32:latest .
 
 Sending build context to Docker daemon  89.08MB
-Step 1/6 : FROM gcr.io/bonair-pass/docker-for-bulding-esp-32-firmware:latest
-latest: Pulling from bonair-pass/docker-for-bulding-esp-32-firmware
+Step 1/6 : FROM muod/esp32-sdk:latest
+latest: Pulling from muod/esp32-sdk
 54f7e8ac135a: Pull complete
 9c907476ebb5: Downloading  35.76MB/147.5MB
 4a8793b25082: Download complete
