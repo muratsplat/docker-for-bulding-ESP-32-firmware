@@ -1,18 +1,13 @@
 dist: trusty
-branches:
-  only:
-    - master
 jobs:
   include:
-    - stage: build docker image
+    - stage: build test
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t esp32-sdk:latest .
       - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
     - stage: push docker image
       if: branch = master
-      on:
-        tags: true
       script:  
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t esp32-sdk:latest .
