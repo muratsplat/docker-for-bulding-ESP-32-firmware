@@ -7,7 +7,6 @@ jobs:
       # - docker build -t esp32-sdk:latest .
       # - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
     - stage: push
-      branch: master
       script:  
       - echo "foo"
       # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -15,4 +14,8 @@ jobs:
       # - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
       # - docker push $DOCKER_USERNAME/esp32-sdk:latest
       # - docker push $DOCKER_USERNAME/esp32-sdk:$TRAVIS_TAG
-    
+stages:
+  - test
+  - name: push
+    if: (branch = master)
+  
