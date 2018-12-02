@@ -16,7 +16,7 @@ jobs:
       - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
       - docker push $DOCKER_USERNAME/esp32-sdk:latest
       - docker push $DOCKER_USERNAME/esp32-sdk:$TRAVIS_TAG
-    - stage: version push
+    - stage: latest push
       if: (NOT type IN (pull_request)) AND (branch = master)
       on.tags: true
       script:  
