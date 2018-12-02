@@ -6,11 +6,12 @@ jobs:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t esp32-sdk:latest .
       - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
-      - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:$TRAVIS_TAG
     - stage: push docker image
       branches:
         only:
           - master
+      on:
+        tags: true
       script:  
       - docker push $DOCKER_USERNAME/esp32-sdk:latest
       - docker push $DOCKER_USERNAME/esp32-sdk:$TRAVIS_TAG
