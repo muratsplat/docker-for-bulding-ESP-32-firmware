@@ -4,15 +4,16 @@ jobs:
     - stage: test
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      # - docker build -t esp32-sdk:latest .
-      # - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
+      - docker build -t esp32-sdk:latest .
+      - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
     - stage: push
       if: (NOT type IN (pull_request)) AND (branch = master)
+      on.tags: true
       script:  
-      - echo "foo"
-      # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      # - docker build -t esp32-sdk:latest .
-      # - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
-      # - docker push $DOCKER_USERNAME/esp32-sdk:latest
-      # - docker push $DOCKER_USERNAME/esp32-sdk:$TRAVIS_TAG
+      # - echo "foo"
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t esp32-sdk:latest .
+      - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
+      - docker push $DOCKER_USERNAME/esp32-sdk:latest
+      - docker push $DOCKER_USERNAME/esp32-sdk:$TRAVIS_TAG
       
