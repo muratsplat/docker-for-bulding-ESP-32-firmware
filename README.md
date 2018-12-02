@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/muratsplat/docker-for-bulding-ESP-32-firmware.svg?branch=master)](https://travis-ci.com/muratsplat/docker-for-bulding-ESP-32-firmware)
+
 # docker-for-bulding-esp-32-firmware 
 
 This is Dockerfile. it will be used to build the firmware of ESP-32 with security certificate..
