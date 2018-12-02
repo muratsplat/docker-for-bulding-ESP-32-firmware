@@ -9,9 +9,10 @@ jobs:
     - stage: push docker image
       if: branch = master
       script:  
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t esp32-sdk:latest .
-      - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
-      - docker push $DOCKER_USERNAME/esp32-sdk:latest
-      - docker push $DOCKER_USERNAME/esp32-sdk:$TRAVIS_TAG
+      - echo "foo"
+      # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      # - docker build -t esp32-sdk:latest .
+      # - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
+      # - docker push $DOCKER_USERNAME/esp32-sdk:latest
+      # - docker push $DOCKER_USERNAME/esp32-sdk:$TRAVIS_TAG
     
