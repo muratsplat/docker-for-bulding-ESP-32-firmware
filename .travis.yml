@@ -13,6 +13,9 @@ jobs:
       on:
         tags: true
       script:  
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t esp32-sdk:latest .
+      - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
       - docker push $DOCKER_USERNAME/esp32-sdk:latest
       - docker push $DOCKER_USERNAME/esp32-sdk:$TRAVIS_TAG
     
