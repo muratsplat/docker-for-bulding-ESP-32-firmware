@@ -1,4 +1,7 @@
 dist: trusty
+branches:
+  only:
+    - master
 jobs:
   include:
     - stage: build docker image
@@ -7,9 +10,6 @@ jobs:
       - docker build -t esp32-sdk:latest .
       - docker tag esp32-sdk:latest $DOCKER_USERNAME/esp32-sdk:latest
     - stage: push docker image
-      branches:
-        only:
-          - master
       on:
         tags: true
       script:  
