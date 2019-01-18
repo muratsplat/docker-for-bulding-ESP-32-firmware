@@ -25,7 +25,7 @@ CMD [ "bash", "./build.sh"]
 ## How to build new docker image over on `docker-for-bulding-esp-32-firmware`
 
 ```sh
-$ docker build -t esp32:latest .
+$ docker build -t muod/esp32-sdk:latest .
 
 Sending build context to Docker daemon  89.08MB
 Step 1/6 : FROM muod/esp32-sdk:latest
